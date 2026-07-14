@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+  <key>Label</key><string>com.YOU.openwebui</string>
+  <key>ProgramArguments</key><array>
+    <string>/bin/bash</string><string>-c</string>
+    <string>cd $HOME && exec $HOME/.local/bin/open-webui serve --host 0.0.0.0 --port 3000</string>
+  </array>
+  <key>EnvironmentVariables</key><dict>
+    <key>HOME</key><string>/Users/YOU</string>
+    <key>DATA_DIR</key><string>/Users/YOU/.open-webui</string>
+    <key>OLLAMA_BASE_URL</key><string>http://localhost:11434</string>
+  </dict>
+  <key>RunAtLoad</key><true/><key>KeepAlive</key><true/>
+  <key>StandardOutPath</key><string>/Users/YOU/openwebui.log</string>
+  <key>StandardErrorPath</key><string>/Users/YOU/openwebui.log</string>
+</dict></plist>

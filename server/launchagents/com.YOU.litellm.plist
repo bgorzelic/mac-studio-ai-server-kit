@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+  <key>Label</key><string>com.YOU.litellm</string>
+  <key>ProgramArguments</key><array>
+    <string>/Users/YOU/.local/bin/litellm</string>
+    <string>--config</string><string>/Users/YOU/litellm.yaml</string>
+    <string>--host</string><string>0.0.0.0</string><string>--port</string><string>4000</string>
+  </array>
+  <key>EnvironmentVariables</key><dict><key>HOME</key><string>/Users/YOU</string></dict>
+  <key>RunAtLoad</key><true/><key>KeepAlive</key><true/>
+  <key>StandardOutPath</key><string>/Users/YOU/litellm.log</string>
+  <key>StandardErrorPath</key><string>/Users/YOU/litellm.log</string>
+</dict></plist>
