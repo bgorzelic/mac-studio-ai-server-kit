@@ -4,7 +4,7 @@
   <key>Label</key><string>com.YOU.openwebui</string>
   <key>ProgramArguments</key><array>
     <string>/bin/bash</string><string>-c</string>
-    <string>cd $HOME && exec $HOME/.local/bin/open-webui serve --host 0.0.0.0 --port 3000</string>
+    <string>cd $HOME &amp;&amp; exec $HOME/.local/bin/open-webui serve --host 0.0.0.0 --port 3000</string>
   </array>
   <key>EnvironmentVariables</key><dict>
     <key>HOME</key><string>/Users/YOU</string>
