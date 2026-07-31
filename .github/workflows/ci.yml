@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  shellcheck:
+    name: shellcheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: shellcheck all shell scripts
+        # --severity=warning: info-level findings (e.g. intentional SC2016
+        # single-quoted strings appended to shell profiles) are not failures.
+        run: |
+          set -euo pipefail
+          mapfile -t scripts < <(find . -path ./.git -prune -o \( -name '*.sh' -o -name '*.command' \) -type f -print | sort)
+          printf 'Checking %d scripts:\n' "${#scripts[@]}"
+          printf '  %s\n' "${scripts[@]}"
+          shellcheck --severity=warning "${scripts[@]}"
+
+  plist-lint:
+    name: plist validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: validate LaunchAgent plist templates
+        # plutil is macOS-only; plistlib parses the same XML plist format.
+        run: |
+          set -euo pipefail
+          status=0
+          while IFS= read -r f; do
+            if python3 -c "import plistlib, sys; plistlib.load(open(sys.argv[1], 'rb'))" "$f"; then
+              echo "OK   $f"
+            else
+              echo "FAIL $f"
+              status=1
+            fi
+          done < <(find . -path ./.git -prune -o -name '*.plist' -type f -print | sort)
+          exit "$status"
